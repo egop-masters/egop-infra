@@ -30,7 +30,10 @@ services:
       SEQ_API_CANONICALURI: "https://birdegop.ru:50505"
   
   prometheus:
-    image: prom/prometheus
+    image: prometheus
+    build:
+      context: .
+      dockerfile: Prometheus.Dockerfile
     container_name: prometheus
     user: root
     volumes:

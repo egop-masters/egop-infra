@@ -1,0 +1,6 @@
+# Ignore OS-specific and IDE-specific files
+*.swp
+*.swo
+*.DS_Store
+.vscode/
+.idea/
