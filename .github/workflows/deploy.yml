@@ -19,5 +19,9 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
+      - name: copy configs
+        run: |
+          cp prometheus.yml /home/egop/masters/prometheus/
+          cp prometheus.web.yml /home/egop/masters/prometheus/
       - name: docker compose
         run: docker compose -f docker-compose.yml up --build --detach

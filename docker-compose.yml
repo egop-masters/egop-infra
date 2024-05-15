@@ -30,14 +30,13 @@ services:
       SEQ_API_CANONICALURI: "https://birdegop.ru:50505"
   
   prometheus:
-    image: prometheus
-    build:
-      context: .
-      dockerfile: Prometheus.Dockerfile
+    image: prom/prometheus
     container_name: prometheus
     user: root
     volumes:
       - /home/egop/masters/prometheus:/prometheus/data
+      - /home/egop/masters/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /home/egop/masters/prometheus.web.yml:/etc/prometheus/prometheus.web.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus/data'
