@@ -1,5 +1,9 @@
 version: "3"
 
+networks:
+  masters:
+    external: true
+
 services:
   
 #  outer-nginx:
@@ -28,6 +32,8 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SEQ_API_CANONICALURI: "https://birdegop.ru:50505"
+    networks: 
+      - masters
   
   prometheus:
     image: prom/prometheus
@@ -43,6 +49,8 @@ services:
       - '--web.config.file=/etc/prometheus/prometheus.web.yml'
     ports:
       - "55055:9090"
+    networks:
+      - masters
   
   grafana:
     image: grafana/grafana:latest
@@ -56,3 +64,5 @@ services:
       - "50555:3000"
     depends_on:
       - prometheus
+    networks:
+      - masters
