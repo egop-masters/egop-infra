@@ -34,7 +34,7 @@ services:
     container_name: prometheus
     user: root
     volumes:
-      - /home/actions/masters/prometheus:/prometheus/data
+      - /home/actions/masters/prometheusdata:/prometheus/data
       - /home/actions/masters/prometheus.yml:/etc/prometheus/prometheus.yml
       - /home/actions/masters/prometheus.web.yml:/etc/prometheus/prometheus.web.yml
     command:
