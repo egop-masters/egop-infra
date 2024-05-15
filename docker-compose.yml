@@ -24,7 +24,7 @@ services:
     ports:
       - "50505:80"
     volumes:
-      - /home/egop/masters/seq:/data
+      - /home/actions/masters/seq:/data
     environment:
       ACCEPT_EULA: "Y"
       SEQ_API_CANONICALURI: "https://birdegop.ru:50505"
@@ -34,9 +34,9 @@ services:
     container_name: prometheus
     user: root
     volumes:
-      - /home/egop/masters/prometheus:/prometheus/data
-      - /home/egop/masters/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /home/egop/masters/prometheus.web.yml:/etc/prometheus/prometheus.web.yml
+      - /home/actions/masters/prometheus:/prometheus/data
+      - /home/actions/masters/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /home/actions/masters/prometheus.web.yml:/etc/prometheus/prometheus.web.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus/data'
@@ -49,7 +49,7 @@ services:
     container_name: grafana
     user: root
     volumes:
-      - /home/egop/masters/grafana:/var/lib/grafana
+      - /home/actions/masters/grafana:/var/lib/grafana
     environment:
       GF_SERVER_ROOT_URL: http://localhost:3000
     ports:
