@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: 'ms-1'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['ms-1:80']
+
+  - job_name: 'ms-2'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['ms-2:80']
