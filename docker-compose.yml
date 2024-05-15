@@ -36,13 +36,16 @@ services:
       - masters
   
   prometheus:
-    image: prom/prometheus
+    image: prometheus-custom
+    build:
+      context: .
+      dockerfile: Prometheus.Dockerfile
     container_name: prometheus
     user: root
     volumes:
       - /home/actions/masters/prometheus:/prometheus
-      - /home/actions/masters/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /home/actions/masters/prometheus.web.yml:/etc/prometheus/prometheus.web.yml
+#      - /home/actions/masters/prometheus.yml:/etc/prometheus/prometheus.yml
+#      - /home/actions/masters/prometheus.web.yml:/etc/prometheus/prometheus.web.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus/data'
