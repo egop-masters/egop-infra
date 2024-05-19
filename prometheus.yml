@@ -15,4 +15,4 @@ scrape_configs:
   - job_name: 'grpc-go'
     metrics_path: '/metrics'
     static_configs:
-      - targets: [grpc-go:8080']
+      - targets: ['grpc-go:8080']
